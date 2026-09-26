@@ -7,6 +7,8 @@ import PlayerTeleportTab from "./classes/tabs/PlayerTeleportTab";
 import AkimboGeneralPanelTab from "./classes/tabs/AkimboGeneralPanelTab";
 import AkimboSettingsPanelTab from "./classes/tabs/AkimboSettingsPanelTab";
 import AkimboBlueprintPanelTab from "./classes/tabs/AkimboBlueprintPanelTab";
+import AndyPanelTab from "./classes/tabs/AndyPanelTab";
+
 // import './dependencies/jscolor.js'
 class AkimboAdminHud extends MousePage {
 	constructor() {
@@ -138,8 +140,13 @@ class AkimboAdminHud extends MousePage {
 		this.HTMLNodes.tab3.innerText = "Items";
 		this.HTMLNodes.tab3.href = "#tab3";
 		this.HTMLNodes.tab6 = createElement(tabs, "a", ["tab-link"]);
-		this.HTMLNodes.tab6.innerText = "Blueprints";
+	        this.HTMLNodes.tab6.innerText = "Blueprints";
 		this.HTMLNodes.tab6.href = "#tab6";
+
+                this.HTMLNodes.tab7 = createElement(tabs, "a", ["tab-link"]);
+                this.HTMLNodes.tab7.innerText = "Andy";
+	        this.HTMLNodes.tab7.href = "#tab7";
+            
 		this.HTMLNodes.tab4 = createElement(tabs, "a", ["tab-link"]);
 		this.HTMLNodes.tab4.innerText = "Debug";
 		this.HTMLNodes.tab4.href = "#tab4";
@@ -165,6 +172,8 @@ class AkimboAdminHud extends MousePage {
 		tabPane4.id = "tab4";
 		let tabPane5 = createElement(tabContent, "div", ["tab-pane"]);
 		tabPane5.id = "tab5";
+		let tabPane7 = createElement(tabContent, "div", ["tab-pane"]);
+		tabPane7.id = "tab7";
 
 		// create each initial tab content
 		// Content of Tab 4 --> needs to load first for debugging
@@ -173,7 +182,9 @@ class AkimboAdminHud extends MousePage {
 		this.TeleportPanel = new PlayerTeleportTab(tabPane2, this);
 		this.ItemPanel = new AkimboItemPanelTab(tabPane3, this);
 		this.SettingPanel = new AkimboSettingsPanelTab(tabPane5, this);
-        this.BlueprintPanel = new AkimboBlueprintPanelTab(tabPane6,this);
+            this.BlueprintPanel = new AkimboBlueprintPanelTab(tabPane6,this);
+            this.AndyPanel = new AndyPanelTab(tabPane7,this);
+            
 		// Add tab functionality
 		this._addTabFunctionality();
 	}
